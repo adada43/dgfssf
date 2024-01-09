@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #registrationForm {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #rickRollContainer {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #rickRollText {
+      white-space: pre-line;
+    }
+
+    #closeRickRoll {
+      margin-top: 10px;
+      cursor: pointer;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div id="registrationForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username">
+    <button onclick="openRickRoll()">Register</button>
+  </div>
+
+  <div id="rickRollContainer">
+    <div id="rickRollText"></div>
+    <div id="closeRickRoll" onclick="closeRickRoll()">Close</div>
+  </div>
+
+  <script>
+    function openRickRoll() {
+      document.getElementById('registrationForm').style.display = 'none';
+      document.getElementById('rickRollContainer').style.display = 'block';
+
+      let rickRollText = [
+      'Never gonna give you up',
+      'Never gonna let you down',
+      'Never gonna run around and desert you',
+      'Never gonna make you cry',
+      'Never gonna say goodbye',
+      'Never gonna tell a lie and hurt you',
+      'Never gonna give you up',
+      'Never gonna let you down',
+      'Never gonna run around and desert you'
+    ];
+
+      displayNextLine(0, rickRollText);
+    }
+
+    function displayNextLine(index, textArray) {
+      if (index < textArray.length) {
+        let currentText = document.getElementById('rickRollText').innerHTML;
+        document.getElementById('rickRollText').innerHTML = currentText + textArray[index] + '<br>';
+        setTimeout(function () { displayNextLine(index + 1, textArray); }, 1000);
+      }
+    }
+
+    function closeRickRoll() {
+      alert('You can never close the Rick Roll!');
+    }
+  </script>
+</body>
+</html>
